@@ -11,7 +11,7 @@ def hello_world():
 @app.route('/widgets')
 def get_widgets() :
   mydb = mysql.connector.connect(
-    host="mariadb",
+    host="mysqldb",
     user="root",
     password="p@ssw0rd1",
     database="inventory"
@@ -21,7 +21,7 @@ def get_widgets() :
 
   cursor.execute("SELECT * FROM widgets")
 
-  row_headers=[x[0] for x in cursor.description] #this will extract row headers
+  row_headers=[x[0] for x in cursor.description] 
 
   results = cursor.fetchall()
   json_data=[]
@@ -35,7 +35,7 @@ def get_widgets() :
 @app.route('/initdb')
 def db_init():
   mydb = mysql.connector.connect(
-    host="mariadb",
+    host="mysqldb",
     user="root",
     password="p@ssw0rd1"
   )
@@ -46,7 +46,7 @@ def db_init():
   cursor.close()
 
   mydb = mysql.connector.connect(
-    host="mariadb",
+    host="mysqldb",
     user="root",
     password="p@ssw0rd1",
     database="inventory"
